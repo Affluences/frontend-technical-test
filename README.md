@@ -76,7 +76,7 @@ A lighter version of the conventions of our admin application:
 
 - Modern Angular: standalone components, `ChangeDetectionStrategy.OnPush`, `input()` / `output()`, `inject()`.
 - Component state is handled with **signals**; derived state with `computed()`.
-- In templates: `@if` / `@for` syntax, and `@let fooValue = foo();` at the top of the template to read signals.
+- In templates: `@if` / `@for` syntax.
 - Event handlers start with `handle`: `handleChangeSort()`.
 - Booleans start with `is` / `has` / `can` / `should`.
 - Logic that does not depend on Angular goes into pure functions in `*.utils.ts` files.
