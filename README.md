@@ -50,11 +50,10 @@ src/app
 ├── core
 │   ├── clock/          ClockService: the application's "current" time
 │   ├── layout/         Header, with the "Heure simulée" (simulated time) field
-│   └── mock-api/       Fake API: HTTP interceptor + site data
-└── sites
+└── sites               The "Sites" module
     ├── domain/         Business types (Site, opening hours)
-    ├── repositories/   HTTP call, API types (DTOs) and DTO → domain adapters
-    └── presentation/
+    ├── repositories/   HTTP calls (actually mocks in our case), API types (DTOs), DTO → domain adapters
+    └── presentation/   Angular/frontend code
         ├── components/ List page and site card
         ├── constants/  Sort options, category labels and icons
         └── utils/      Pure functions (sorting, occupancy rate, opening hours)
@@ -62,8 +61,8 @@ src/app
 
 ### There is no backend
 
-The application calls `GET /api/sites` with Angular's `HttpClient`, as it would with a real API.
-The call is intercepted by `core/mock-api/mock-api.interceptor.ts`, which answers with the data from `sites.mock.ts` after a short delay.
+The application implements `SitesRepository` with `MockSitesRepository` using static data. In a real application,
+we would use an `ApiSitesRepository` using HTTP calls.
 
 ### Time is simulated
 
@@ -80,5 +79,5 @@ A lighter version of the conventions of our admin application:
 - Event handlers start with `handle`: `handleChangeSort()`.
 - Booleans start with `is` / `has` / `can` / `should`.
 - Logic that does not depend on Angular goes into pure functions in `*.utils.ts` files.
-- The API (DTOs, in snake_case) and the business layer (domain) have separate types, linked by adapters.
+- The repositories (HTTP API, mocks, their DTOs) and the business layer (domain) have separate types, linked by adapters.
 - Explicit names rather than comments.

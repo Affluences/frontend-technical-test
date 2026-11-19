@@ -1,6 +1,4 @@
-import { SiteDto, TimeSlotDto, WeekdayDto } from '../../sites/repositories/site.dto';
-
-type OpeningHoursDto = Record<WeekdayDto, TimeSlotDto[]>;
+import { SiteDto, TimeSlotDto, OpeningHoursDto } from '../dto/site.dto';
 
 const slot = (opensAt: string, closesAt: string): TimeSlotDto => ({ opens_at: opensAt, closes_at: closesAt });
 

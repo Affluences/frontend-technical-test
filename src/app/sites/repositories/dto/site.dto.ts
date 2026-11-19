@@ -7,6 +7,8 @@ export interface TimeSlotDto {
     closes_at: string;
 }
 
+export type OpeningHoursDto = Record<WeekdayDto, TimeSlotDto[]>;
+
 export interface SiteDto {
     id: number;
     name: string;
@@ -15,5 +17,5 @@ export interface SiteDto {
     capacity: number;
     /** `null` when the sensors of the site are offline. */
     current_occupancy: number | null;
-    opening_hours: Record<WeekdayDto, TimeSlotDto[]>;
+    opening_hours: OpeningHoursDto;
 }

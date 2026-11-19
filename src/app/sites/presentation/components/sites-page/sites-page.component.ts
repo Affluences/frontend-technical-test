@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { ClockService } from '../../../../core/clock/clock.service';
-import { SitesRepository } from '../../../repositories/sites.repository';
 import { DEFAULT_SITE_SORT, SITE_SORT_OPTIONS } from '../../constants/site-sort';
 import { sortSites } from '../../utils/sort-sites.utils';
 import { SiteCardComponent } from './site-card/site-card.component';
+import { SitesRepository } from '../../../domain/sites.repository';
 
 @Component({
     selector: 'app-sites-page',

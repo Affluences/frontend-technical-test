@@ -1,5 +1,5 @@
 import { TimeSlot, Weekday, WeeklyOpeningHours } from '../domain/opening-hours';
-import { TimeSlotDto, WeekdayDto } from './site.dto';
+import { TimeSlotDto, WeekdayDto } from './dto/site.dto';
 
 export class WeeklyOpeningHoursAdapter {
     public static fromDto(openingHoursDto: Record<WeekdayDto, TimeSlotDto[]>): WeeklyOpeningHours {

@@ -1,15 +1,20 @@
 import { registerLocaleData } from '@angular/common';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import localeFr from '@angular/common/locales/fr';
 import { ApplicationConfig, LOCALE_ID, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { mockApiInterceptor } from './core/mock-api/mock-api.interceptor';
+import { SitesRepository } from './sites/domain/sites.repository';
+import { MockSitesRepository } from './sites/repositories/mock-sites.repository';
 
 registerLocaleData(localeFr);
 
 export const appConfig: ApplicationConfig = {
     providers: [
         provideBrowserGlobalErrorListeners(),
-        provideHttpClient(withInterceptors([mockApiInterceptor])),
+        provideHttpClient(),
         { provide: LOCALE_ID, useValue: 'fr' },
+        {
+            provide: SitesRepository,
+            useClass: MockSitesRepository,
+        }
     ],
 };

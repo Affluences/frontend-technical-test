@@ -1,5 +1,5 @@
 import { Site, SiteCategory } from '../domain/site';
-import { SiteCategoryDto, SiteDto } from './site.dto';
+import { SiteCategoryDto, SiteDto } from './dto/site.dto';
 import { WeeklyOpeningHoursAdapter } from './weekly-opening-hours.adapter';
 
 const SITE_CATEGORY_BY_DTO: Record<SiteCategoryDto, SiteCategory> = {
