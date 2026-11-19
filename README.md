@@ -21,10 +21,9 @@ It lists libraries and study rooms with their real-time occupancy rate, in the s
     ```
 
 4. Open http://localhost:4200: you should see a list of 24 sites.
-5. Check that the tests and the linter pass:
+5. Check that the linter passes:
 
     ```bash
-    npm test
     npm run lint
     ```
 
@@ -41,8 +40,6 @@ The user interface is in French, like our product.
 | -------------------- | -------------------------------------------------------- |
 | `npm start`          | Starts the application in development mode (live reload) |
 | `npm run build`      | Builds the application for production                    |
-| `npm test`           | Runs the unit tests (Vitest) once                        |
-| `npm run test:watch` | Re-runs the tests on every change                        |
 | `npm run lint`       | Checks the code (ESLint)                                 |
 | `npm run format`     | Formats the code (Prettier)                              |
 
@@ -60,7 +57,7 @@ src/app
     └── presentation/
         ├── components/ List page and site card
         ├── constants/  Sort options, category labels and icons
-        └── utils/      Pure functions (sorting, occupancy rate, opening hours) and their tests
+        └── utils/      Pure functions (sorting, occupancy rate, opening hours)
 ```
 
 ### There is no backend
@@ -82,6 +79,6 @@ A lighter version of the conventions of our admin application:
 - In templates: `@if` / `@for` syntax, and `@let fooValue = foo();` at the top of the template to read signals.
 - Event handlers start with `handle`: `handleChangeSort()`.
 - Booleans start with `is` / `has` / `can` / `should`.
-- Logic that does not depend on Angular goes into pure functions in `*.utils.ts` files, tested in `*.spec.ts` files.
+- Logic that does not depend on Angular goes into pure functions in `*.utils.ts` files.
 - The API (DTOs, in snake_case) and the business layer (domain) have separate types, linked by adapters.
 - Explicit names rather than comments.
