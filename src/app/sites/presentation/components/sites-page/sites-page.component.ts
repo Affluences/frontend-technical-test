@@ -27,11 +27,11 @@ export class SitesPageComponent {
     });
 
     protected readonly displayedSites = computed(() => {
+        const selectedSort = this.selectedSort();
         if (!this.sitesResource.hasValue()) {
             return [];
         }
         const sites = this.sitesResource.value();
-        const selectedSort = this.selectedSort();
         return sortSites(sites, selectedSort);
     });
 
