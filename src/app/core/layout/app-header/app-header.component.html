@@ -1,0 +1,27 @@
+<header class="app-header">
+    <div class="top-bar">
+        <a class="logo" href="/" aria-label="Affluences, accueil">
+            <span class="logo-mark material-symbols-rounded" aria-hidden="true">location_on</span>
+            <span class="logo-text">Affluences</span>
+        </a>
+
+        <label class="clock">
+            <span class="clock-label">
+                <span class="material-symbols-rounded" aria-hidden="true">schedule</span>
+                Heure simulée
+            </span>
+            <input
+                #dateInput
+                class="clock-input"
+                type="datetime-local"
+                [value]="currentDateValue()"
+                (change)="handleChangeCurrentDate(dateInput.value)"
+            />
+        </label>
+    </div>
+
+    <div class="hero">
+        <h1 class="hero-title">Découvrez l'affluence de vos bibliothèques en temps réel</h1>
+        <p class="hero-subtitle">Trouvez une place pour travailler, sans faire le tour de la ville.</p>
+    </div>
+</header>

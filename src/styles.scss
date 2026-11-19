@@ -1,0 +1,48 @@
+// Colors taken from affluences.com.
+:root {
+    --aff-white: #ffffff;
+    --aff-navy-900: #13323d;
+    --aff-navy-700: #1d4b5c;
+    --aff-cyan-500: #0eacca;
+    --aff-cyan-50: #e0f6ff;
+    --aff-grey-50: #f0f4f7;
+    --aff-grey-200: #d5dee2;
+    --aff-grey-600: #49626a;
+    --aff-text: #212529;
+    --aff-green-700: #00806a;
+    --aff-red-700: #b42318;
+
+    --aff-card-shadow: 0 1px 2px rgb(0 0 0 / 12%), 0 3px 3px rgb(0 0 0 / 6%);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--aff-grey-50);
+    color: var(--aff-text);
+    font-family: Nunito, system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+:focus-visible {
+    outline: 3px solid var(--aff-cyan-500);
+    outline-offset: 2px;
+}
+
+.material-symbols-rounded {
+    font-family: 'Material Symbols Rounded';
+    font-size: 1.5rem;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+}

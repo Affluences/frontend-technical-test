@@ -1,0 +1,24 @@
+@let siteValue = site();
+@let categoryDisplayValue = categoryDisplay();
+@let isOpenValue = isOpen();
+
+<article class="site-card">
+    <div class="cover" [class]="'cover-' + siteValue.category">
+        <span class="cover-icon material-symbols-rounded" aria-hidden="true">{{ categoryDisplayValue.icon }}</span>
+
+        <span class="occupancy-badge">
+            <span class="badge-icon material-symbols-rounded" aria-hidden="true">group</span>
+            {{ occupancyRate() | percent }} d'occupation
+        </span>
+    </div>
+
+    <div class="content">
+        <h3 class="name" [title]="siteValue.name">{{ siteValue.name }}</h3>
+        <p class="details">{{ categoryDisplayValue.label }} · {{ siteValue.city }}</p>
+
+        <p class="opening">
+            <span class="opening-status" [class.is-open]="isOpenValue">{{ isOpenValue ? 'Ouvert' : 'Fermé' }}</span>
+            <span class="opening-hours">{{ todayOpeningHoursLabel() }}</span>
+        </p>
+    </div>
+</article>

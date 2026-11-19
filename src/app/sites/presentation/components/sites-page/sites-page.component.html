@@ -1,0 +1,47 @@
+@let displayedSitesValue = displayedSites();
+@let selectedSortValue = selectedSort();
+@let currentDateValue = currentDate();
+@let isLoading = sitesResource.isLoading();
+@let loadingError = sitesResource.error();
+
+<section class="sites-page" aria-labelledby="sites-page-title">
+    <div class="toolbar">
+        <h2 id="sites-page-title" class="title">Est-ce qu'il y a du monde ?</h2>
+
+        <div class="controls">
+            <label class="field">
+                <span class="field-label">Trier par</span>
+                <select #sortSelect class="field-select" (change)="handleChangeSort(sortSelect.value)">
+                    @for (sortOption of sortOptions; track sortOption.value) {
+                        <option [value]="sortOption.value" [selected]="sortOption.value === selectedSortValue">
+                            {{ sortOption.label }}
+                        </option>
+                    }
+                </select>
+            </label>
+        </div>
+    </div>
+
+    @if (isLoading) {
+        <p class="status" role="status">Chargement des sites…</p>
+    } @else if (loadingError) {
+        <p class="status status-error" role="alert">
+            Impossible de charger les sites. Réessayez dans quelques instants.
+        </p>
+    } @else {
+        @let displayedSitesCount = displayedSitesValue.length;
+        <p class="results-count" aria-live="polite">
+            {{ displayedSitesCount }} {{ displayedSitesCount > 1 ? 'sites' : 'site' }}
+        </p>
+
+        <ul class="sites-grid">
+            @for (site of displayedSitesValue; track site.id) {
+                <li>
+                    <app-site-card [site]="site" [currentDate]="currentDateValue" />
+                </li>
+            } @empty {
+                <li class="status">Aucun site ne correspond à votre recherche.</li>
+            }
+        </ul>
+    }
+</section>

@@ -1,0 +1,76 @@
+.sites-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 16px 64px;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.title {
+    margin: 0;
+    color: var(--aff-navy-700);
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.field-label {
+    color: var(--aff-grey-600);
+    font-size: 0.8125rem;
+    font-weight: 700;
+}
+
+.field-select {
+    min-width: 240px;
+    padding: 8px 16px;
+    border: 1px solid var(--aff-grey-200);
+    border-radius: 32px;
+    background-color: var(--aff-white);
+    color: var(--aff-navy-700);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.results-count {
+    margin: 0 0 16px;
+    color: var(--aff-grey-600);
+    font-size: 0.875rem;
+}
+
+.sites-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.status {
+    padding: 48px 0;
+    color: var(--aff-grey-600);
+    text-align: center;
+}
+
+.status-error {
+    color: var(--aff-red-700);
+}

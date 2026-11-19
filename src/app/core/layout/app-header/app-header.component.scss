@@ -1,0 +1,90 @@
+.app-header {
+    padding: 24px 16px 48px;
+    border-radius: 0 0 50px 50px;
+    background:
+        radial-gradient(circle at 20% 0%, rgb(14 172 202 / 35%), transparent 55%),
+        linear-gradient(160deg, var(--aff-navy-700), var(--aff-navy-900));
+    color: var(--aff-white);
+}
+
+.top-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    color: var(--aff-white);
+    text-decoration: none;
+}
+
+.logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--aff-white);
+    border-radius: 50%;
+    font-size: 1.5rem;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.clock {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    padding: 6px 6px 6px 16px;
+    border-radius: 32px;
+    background-color: var(--aff-cyan-50);
+    color: var(--aff-navy-700);
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.clock-label {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.clock-input {
+    padding: 4px 12px;
+    border: 0;
+    border-radius: 32px;
+    background-color: var(--aff-white);
+    color: var(--aff-navy-700);
+    font: inherit;
+}
+
+.hero {
+    max-width: 720px;
+    margin: 32px auto 0;
+    text-align: center;
+}
+
+.hero-title {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.hero-subtitle {
+    margin: 12px 0 0;
+    color: var(--aff-cyan-50);
+    font-size: 1rem;
+}
