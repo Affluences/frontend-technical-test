@@ -1,85 +1,87 @@
-# Affluences – test technique front
+# Affluences – frontend technical test
 
-Bienvenue ! Ce petit projet Angular sert de base à l'entretien technique.
-Il affiche des bibliothèques et salles d'étude avec leur taux d'occupation en temps réel, à la manière de [affluences.com](https://affluences.com).
+Welcome! This small Angular project is the starting point of the technical interview.
+It lists libraries and study rooms with their real-time occupancy rate, in the spirit of [affluences.com](https://affluences.com).
 
-**La consigne te sera donnée au début de l'entretien.** D'ici là, le seul objectif est que le projet tourne sur ta machine.
+**You will get the instructions at the start of the interview.** Until then, the only goal is to get the project running on your machine.
 
-## Avant l'entretien
+## Before the interview
 
-1. Installe [Node.js](https://nodejs.org/) **22 (22.12 minimum) ou 24 et plus** (la version LTS 24 est idéale ; les versions impaires comme la 23 ne sont pas supportées).
-2. Clone le dépôt, puis installe les dépendances :
+1. Install [Node.js](https://nodejs.org/) **22 (22.12 or later) or 24+** (the LTS version 24 is ideal; odd versions such as 23 are not supported).
+2. Clone the repository, then install the dependencies:
 
     ```bash
     npm ci
     ```
 
-3. Lance l'application :
+3. Start the application:
 
     ```bash
     npm start
     ```
 
-4. Ouvre http://localhost:4200 : tu dois voir une liste de 24 sites.
-5. Vérifie que les tests et le lint passent :
+4. Open http://localhost:4200: you should see a list of 24 sites.
+5. Check that the tests and the linter pass:
 
     ```bash
     npm test
     npm run lint
     ```
 
-Le jour J, prépare ton éditeur habituel et, si tu en utilises un, ton assistant IA : **il est autorisé**, comme au quotidien chez nous.
-L'entretien se fait en visio avec partage d'écran.
+On the day, have your usual editor ready and, if you use one, your AI assistant: **it is allowed**, just like in our day-to-day work.
+The interview is a video call with screen sharing.
 
-Tu peux bien sûr parcourir le code à l'avance.
+Feel free to browse the code beforehand.
 
-## Commandes
+The user interface is in French, like our product.
 
-| Commande             | Rôle                                                            |
-| -------------------- | --------------------------------------------------------------- |
-| `npm start`          | Lance l'application en développement (rechargement automatique) |
-| `npm run build`      | Compile l'application pour la production                        |
-| `npm test`           | Lance les tests unitaires (Vitest) une fois                     |
-| `npm run test:watch` | Relance les tests à chaque modification                         |
-| `npm run lint`       | Vérifie le code (ESLint)                                        |
-| `npm run format`     | Formate le code (Prettier)                                      |
+## Commands
 
-## Comment le projet est organisé
+| Command              | What it does                                             |
+| -------------------- | -------------------------------------------------------- |
+| `npm start`          | Starts the application in development mode (live reload) |
+| `npm run build`      | Builds the application for production                    |
+| `npm test`           | Runs the unit tests (Vitest) once                        |
+| `npm run test:watch` | Re-runs the tests on every change                        |
+| `npm run lint`       | Checks the code (ESLint)                                 |
+| `npm run format`     | Formats the code (Prettier)                              |
+
+## How the project is organised
 
 ```
 src/app
 ├── core
-│   ├── clock/          ClockService : l'heure « actuelle » de l'application
-│   ├── layout/         En-tête, avec le champ « Heure simulée »
-│   └── mock-api/       Fausse API : intercepteur HTTP + données des sites
+│   ├── clock/          ClockService: the application's "current" time
+│   ├── layout/         Header, with the "Heure simulée" (simulated time) field
+│   └── mock-api/       Fake API: HTTP interceptor + site data
 └── sites
-    ├── domain/         Types métier (Site, horaires d'ouverture)
-    ├── repositories/   Appel HTTP, types de l'API (DTO) et adaptateurs DTO → domaine
+    ├── domain/         Business types (Site, opening hours)
+    ├── repositories/   HTTP call, API types (DTOs) and DTO → domain adapters
     └── presentation/
-        ├── components/ Page de la liste et carte d'un site
-        ├── constants/  Options de tri, libellés et icônes des catégories
-        └── utils/      Fonctions pures (tri, taux d'occupation, horaires) et leurs tests
+        ├── components/ List page and site card
+        ├── constants/  Sort options, category labels and icons
+        └── utils/      Pure functions (sorting, occupancy rate, opening hours) and their tests
 ```
 
-### Il n'y a pas de backend
+### There is no backend
 
-L'application appelle `GET /api/sites` avec le `HttpClient` d'Angular, comme elle le ferait avec une vraie API.
-L'appel est intercepté par `core/mock-api/mock-api.interceptor.ts`, qui répond avec les données de `sites.mock.ts` après une courte latence.
+The application calls `GET /api/sites` with Angular's `HttpClient`, as it would with a real API.
+The call is intercepted by `core/mock-api/mock-api.interceptor.ts`, which answers with the data from `sites.mock.ts` after a short delay.
 
-### L'heure est simulée
+### Time is simulated
 
-Les horaires d'ouverture dépendent de l'heure. Pour pouvoir tester l'application à n'importe quel moment de la semaine, l'heure « actuelle » vient de `ClockService` et peut être changée depuis l'en-tête (« Heure simulée »). Par défaut : aujourd'hui à 14h30.
-Toutes les heures sont celles du fuseau du navigateur.
+Opening hours depend on the time of day. So that you can check the application at any time of the week, the "current" time comes from `ClockService` and can be changed from the header ("Heure simulée"). Default: today at 2:30 pm.
+All times use the browser's time zone.
 
 ## Conventions
 
-Une version allégée des conventions de notre application d'administration :
+A lighter version of the conventions of our admin application:
 
-- Angular récent : composants standalone, `ChangeDetectionStrategy.OnPush`, `input()` / `output()`, `inject()`.
-- L'état des composants est géré avec des **signals** ; l'état dérivé avec `computed()`.
-- Dans les templates : syntaxe `@if` / `@for`, et `@let fooValue = foo();` en haut du template pour lire les signals.
-- Les gestionnaires d'événements commencent par `handle` : `handleChangeSort()`.
-- Les booléens commencent par `is` / `has` / `can` / `should`.
-- La logique sans dépendance à Angular va dans des fonctions pures `*.utils.ts`, testées dans des `*.spec.ts`.
-- L'API (DTO, en snake_case) et le métier (domaine) ont des types séparés, reliés par des adaptateurs.
-- Des noms explicites plutôt que des commentaires.
+- Modern Angular: standalone components, `ChangeDetectionStrategy.OnPush`, `input()` / `output()`, `inject()`.
+- Component state is handled with **signals**; derived state with `computed()`.
+- In templates: `@if` / `@for` syntax, and `@let fooValue = foo();` at the top of the template to read signals.
+- Event handlers start with `handle`: `handleChangeSort()`.
+- Booleans start with `is` / `has` / `can` / `should`.
+- Logic that does not depend on Angular goes into pure functions in `*.utils.ts` files, tested in `*.spec.ts` files.
+- The API (DTOs, in snake_case) and the business layer (domain) have separate types, linked by adapters.
+- Explicit names rather than comments.
